@@ -2,10 +2,10 @@ import java.util.*;
 import java.io.*;
 
 public class Day6 extends AdventOfCode{
-	
+
 	private int[][] matrix;
 	ArrayList<Point> points;
-	
+
 	private static class Point{
 
 		int id;
@@ -28,7 +28,7 @@ public class Day6 extends AdventOfCode{
 	private int closestsID(int x, int y){
 		int min = Integer.MAX_VALUE;
 		int idpoints = 0;
-		boolean vsajDva = false;
+		boolean atLeastTwo = false;
 		Point p = null;
 		for(Point t : points){
 			int r = manhattan(x, y, t.x, t.y); 
@@ -36,14 +36,14 @@ public class Day6 extends AdventOfCode{
 				min = r;
 				idpoints = t.id;
 				p = t;
-				vsajDva = false;
+				atLeastTwo = false;
 			}
 			else if(r == min){
-				vsajDva = true;
+				atLeastTwo = true;
 			}
 		
 		}
-		if(vsajDva){
+		if(atLeastTwo){
 			return 0;
 		}
 		p.area++;
