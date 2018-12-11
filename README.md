@@ -12,3 +12,5 @@ Day 6 | Chronal Coordinates| 1 | 0
 Day 7 | The Sum Of Its Parts | 1 | 0
 Day 8 | Memory Maneuver | 1 | 0
 Day 9 | Marble Mania | 1 | 0
+Day 10 | The Stars Align | 1 | 0
+Day 11 | Chronal Charge | 1 | 0
