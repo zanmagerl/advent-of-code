@@ -14,3 +14,6 @@ Day 8 | Memory Maneuver | 1 | 0
 Day 9 | Marble Mania | 1 | 0
 Day 10 | The Stars Align | 1 | 0
 Day 11 | Chronal Charge | 1 | 0
+Day 12 | Subterranean Sustainability | 1 | 0 
+Day 13 | Mine Cart Madness | 1 | 0
+Day 14 | Chocolate Charts | 1 | 0
