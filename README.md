@@ -19,3 +19,5 @@ Day 13 | Mine Cart Madness | 1 | 0
 Day 14 | Chocolate Charts | 1 | 0
 Day 15 | Beverage Bandits | 1 | 0
 Day 16 | Chronal Classification | 1 | 0
+
+* Disclaimer: Source code for Day 10 and Day 15 will be uploaded, when code reaches certain standard of readibility. 
