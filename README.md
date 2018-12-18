@@ -19,3 +19,5 @@ Day 13 | Mine Cart Madness | 1 | 0
 Day 14 | Chocolate Charts | 1 | 0
 Day 15 | Beverage Bandits | 1 | 0
 Day 16 | Chronal Classification | 1 | 0
+Day 17 | Reservoir Research | 1 | 0
+Day 18 | Settlers of The North Pole | 1 | 0
