@@ -21,3 +21,5 @@ Day 15 | Beverage Bandits | 1 | 0
 Day 16 | Chronal Classification | 1 | 0
 Day 17 | Reservoir Research | 1 | 0
 Day 18 | Settlers of The North Pole | 1 | 0
+
+*Disclaimer: Source code for Day 10 and Day 15 will be uploaded, when certain standard of readiblity is reached.
