@@ -1,0 +1,23 @@
+Immune System:
+2208 6238 ( immune slashing ) 23 bludgeoning 20
+7603 6395 ( weak radiation ) 6 cold 15
+4859 5904 ( weak fire ) 12 cold 11
+1608 7045 ( weak fire weak cold immune bludgeoning immune radiation ) 31 radiation 10
+39 4208 903 radiation 7
+6969 9562 ( immune slashing immune cold ) 13 slashing 3
+2483 6054 ( immune fire ) 20 cold 19
+506 3336 64 radiation 6
+2260 10174 ( weak fire ) 34 slashing 5
+2817 9549 ( immune cold immune fire weak bludgeoning ) 31 cold 2
+
+Infection:
+3650 25061 ( weak fire weak bludgeoning ) 11 slashing 12
+508 48731 ( weak bludgeoning ) 172 cold 13
+724 27385 69 radiation 1
+188 41786 416 bludgeoning 4
+3045 36947 ( weak slashing immune fire immune bludgeoning ) 24 slashing 9
+7006 42545 ( immune cold immune slashing immune fire ) 9 fire 16
+853 55723 ( weak cold weak fire ) 114 bludgeoning 17
+3268 43027 ( immune slashing immune fire ) 25 slashing 8
+1630 47273 ( weak cold weak bludgeoning ) 57 slashing 14
+3383 12238 7 radiation 18
