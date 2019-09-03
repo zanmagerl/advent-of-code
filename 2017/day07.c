@@ -5,11 +5,11 @@
 #define MAX_NAME_LENGTH 20
 #define MAX_NUMBER_OF_SONS 10
 
-typedef struct nodes{
-    char name[MAX_NAME_LENGTH];
+typedef struct node_{
+    char* name;
     int weight;
-    char sons[MAX_NUMBER_OF_SONS][MAX_NAME_LENGTH];
-    struct nodes* realSons[MAX_NUMBER_OF_SONS];
+    char** sons;
+    struct node_** realSons;
     int numberOfSons;
 }node;
 
@@ -50,24 +50,44 @@ int insertSonsInNode(FILE* file, node* father){
         }else if(c == ','){
             
             name[letterCount] = '\0';
+            
+            //To overwrite whatever was already on father->sons address.
+            if(wordCount == 0){
+                father->sons = NULL;
+            }
+            
+            father->sons = realloc(father->sons, (wordCount + 1)*sizeof(char*));
+            father->sons[wordCount] = malloc(MAX_NAME_LENGTH * sizeof(char));
 
             strcpy(father->sons[wordCount], name);
             free(name);
+
             name = malloc(MAX_NAME_LENGTH * sizeof(char));
+            
             letterCount = 0;
             wordCount++;
         }else{
-                
             name[letterCount] = '\0';
+
+            father->sons = realloc(father->sons, (wordCount + 1)*sizeof(char*));
+            father->sons[wordCount] = malloc(MAX_NAME_LENGTH * sizeof(char));
+
             strcpy(father->sons[wordCount], name);
+            
             free(name);
+            
             wordCount++;
             father->numberOfSons = wordCount;
+            
             return 1;
         }
     }
     
     name[letterCount] = '\0';
+
+    father->sons = realloc(father->sons, (wordCount + 1)*sizeof(char*));
+    father->sons[wordCount] = malloc(MAX_NAME_LENGTH * sizeof(char));
+
     strcpy(father->sons[wordCount], name);
     free(name);
     wordCount++;
@@ -78,7 +98,7 @@ int insertSonsInNode(FILE* file, node* father){
 
 node** parse(FILE* file){
 
-    int numberOfNodes = 1400;
+    int numberOfNodes = 1;
 
     nodes = malloc(numberOfNodes * sizeof(node*));
 
@@ -86,8 +106,8 @@ node** parse(FILE* file){
     int i;
 
     for(i = 0; ; i++){
-
         node* newNode = malloc(sizeof(node));
+        newNode->name = malloc(MAX_NAME_LENGTH * sizeof(char));
         fscanf(file, "%s", newNode->name);
 
         char rawWeight[10];
@@ -96,14 +116,19 @@ node** parse(FILE* file){
         char c = fgetc(file);
         
         //Detecting newline
-        if(c == '\n' || c == EOF){
-            //node has no sons
-            newNode->numberOfSons = 0;
-        }else{
+        if(c == ' '){
             char trash[10];
             fscanf(file, "%s", trash); // ->
             fgetc(file);
             isOver = insertSonsInNode(file, newNode);
+        }else{
+           //node has no sons
+            newNode->numberOfSons = 0;
+        }
+
+        if(i >= numberOfNodes){
+            numberOfNodes *= 2;
+            nodes = realloc(nodes, numberOfNodes * sizeof(node*));
         }
        
         nodes[i] = malloc(sizeof(node*));
@@ -152,7 +177,13 @@ void linkThem(node** nodes){
         for(int j = 0; j < nodes[i]->numberOfSons; j++){
             for(int n = 0; n < nodesNumber; n++){
                 if(strcmp(nodes[i]->sons[j], nodes[n]->name) == 0){
+                    
+                    if(j == 0){
+                        nodes[i]->realSons = NULL;
+                    }
+                    nodes[i]->realSons = realloc(nodes[i]->realSons,(j + 1) * sizeof(node*));
                     nodes[i]->realSons[j] = nodes[n];
+                
                 }
             }
         }
