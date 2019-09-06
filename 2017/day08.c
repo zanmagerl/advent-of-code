@@ -63,21 +63,25 @@ int calculateKey(char* name){
     int length = strlen(name);
 
     for(int i = 0; i < length; i++){
-        result *= 42;
+        result *= 40;
         result += name[i];
     }
-
     return result;
 }
 
 void changeValue(instruction** instructions, int index){
-    
+
     if(search(calculateKey(instructions[index]->registerName)) == NULL){
-        insert(instructions[index]->mode * instructions[index]->value, calculateKey(instructions[index]->registerName));
+        insert(instructions[index]->mode * instructions[index]->value, calculateKey(instructions[index]->registerName), instructions[index]->registerName);
     }else{
         
         item* item = search(calculateKey(instructions[index]->registerName));
-        item->value += instructions[index]->mode * instructions[index]->value;
+
+        if(strcmp(item->id, instructions[index]->registerName) == 0){
+            item->value += instructions[index]->mode * instructions[index]->value;
+        }else{
+            insert(instructions[index]->mode * instructions[index]->value, calculateKey(instructions[index]->registerName), instructions[index]->registerName);
+        }
     }
 }
 
@@ -205,7 +209,7 @@ int main(){
 
     instruction** instructions = parse(file);
     
-    printf("%d\n", partTwo(instructions));
+    printf("%d\n", partOne(instructions));
 
     return 0;
 }
