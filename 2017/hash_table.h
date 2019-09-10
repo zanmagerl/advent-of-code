@@ -30,7 +30,7 @@ void rehash(){
         if(hash_table[i] != NULL){
             int newKey = hashCode(hash_table[i]->key);
             newTable[newKey] = malloc(sizeof(item)); 
-            newTable[newKey] = hash_table[i];
+            memcpy(newTable[newKey], hash_table[i], sizeof(item));
             free(hash_table[i]);
         }
     }

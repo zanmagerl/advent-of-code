@@ -63,7 +63,7 @@ int calculateKey(char* name){
     int length = strlen(name);
 
     for(int i = 0; i < length; i++){
-        result *= 40;
+        result *= 42;
         result += name[i];
     }
     return result;
