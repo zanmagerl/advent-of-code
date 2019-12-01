@@ -21,4 +21,4 @@ for line in input:
     modules.append(int(line))
 
 print("Part one: {}".format(part_one(modules)))
-print("Part one: {}".format(part_two(modules)))
+print("Part two: {}".format(part_two(modules)))
