@@ -11,3 +11,5 @@ Day 1 | The Tyranny of the Rocket Equation  | 1 |
 Day 2 | 1202 Program Alarm | 1 | 
 Day 3 | Crossed Wires | 1 | 
 Day 4 | Secure Container  | 1 | 
+Day 5 | Sunny with a Chance of Asteroids | 1 |
+Day 6 | Universal Orbit Map | 1 |
