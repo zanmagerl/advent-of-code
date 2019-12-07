@@ -150,7 +150,7 @@ def part_two(codes, configuration):
     for permutation in permutations:
 
         # "Data structure" to keep track of states of amplifiers
-        previous_output = [
+        states = [
             (0, codes.copy(), 0),
             (0, codes.copy(), 0),
             (0, codes.copy(), 0),
@@ -158,23 +158,23 @@ def part_two(codes, configuration):
             (0, codes.copy(), 0),
             ]
         
-        while not over(previous_output):
+        while not over(states):
             
             for i in range(0,5):
 
-                if(over(previous_output)):
+                if(over(states)):
                     break
 
                 # arguments: code of amplifier, phase setting, output of the previous amplifier, program counter
-                previous_output[i] = interuptable_amplifier(
-                    previous_output[i][1],                                             
+                states[i] = interuptable_amplifier(
+                    states[i][1],                                             
                     permutation[i],                                                     
-                    (previous_output[i-1][0] if i > 0 else previous_output[4][0]), 
-                    previous_output[i][2]
+                    (states[i-1][0] if i > 0 else states[4][0]), 
+                    states[i][2]
                     )
         
-        if previous_output[4][0] > max_signal:
-            max_signal = previous_output[4][0]
+        if states[4][0] > max_signal:
+            max_signal = states[4][0]
 
     return max_signal   
   
@@ -187,5 +187,5 @@ for code in input:
 part_one_configuration = [0,1,2,3,4]
 part_two_configuration = [5,6,7,8,9]
 
-print(part_one(codes, part_one_configuration))
-print(part_two(codes, part_two_configuration))
+print("Part one: {}".format(part_one(codes, part_one_configuration)))
+print("Part two: {}".format(part_two(codes, part_two_configuration)))
