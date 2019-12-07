@@ -158,7 +158,7 @@ def part_two(codes, configuration):
             (0, codes.copy(), 0),
             ]
         
-        while True and not over(previous_output):
+        while not over(previous_output):
             
             for i in range(0,5):
 
@@ -172,9 +172,6 @@ def part_two(codes, configuration):
                     (previous_output[i-1][0] if i > 0 else previous_output[4][0]), 
                     previous_output[i][2]
                     )
-                
-            if previous_output[4][2] >= len(codes):
-                break
         
         if previous_output[4][0] > max_signal:
             max_signal = previous_output[4][0]
