@@ -16,3 +16,4 @@ Day 6 | Universal Orbit Map | 1 |
 Day 7 | Amplification Circuit | 1 |
 Day 8 | Space Image Format | 1 |
 Day 9 | Sensor Boost | 1 |
+Day 10 | Monitoring Station | 1 |
