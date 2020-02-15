@@ -97,9 +97,6 @@ def part_two(laser_position, asteroids):
         counter += 1
         if counter == 200:
             return shooted_asteroid.x * 100 + shooted_asteroid.y
-    
-    for asteroid in asteroids:
-        print(asteroid)
 
 lines = list(open("input10.txt").read().split("\n"))
 grid = []
