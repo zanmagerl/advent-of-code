@@ -1,2 +1,11 @@
+.idea
+*.iml
+
+
 *.class
 2018/day10
+
+.env
+
+.DS_Store
+._.DS_Store
