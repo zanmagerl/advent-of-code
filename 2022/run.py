@@ -18,7 +18,7 @@ def run_tests(day: int, mode: str) -> None:
         print("Fetched input", colored("\u2713", "green"))
     else:
         try:
-            subprocess.check_output(f'wget -q --no-check-certificate --load-cookies=".env" -O "{input_file}" "https://adventofcode.com/2021/day/{day}/input"', shell=True)
+            subprocess.check_output(f'wget -q --no-check-certificate --load-cookies=".env" -O "{input_file}" "https://adventofcode.com/2022/day/{day}/input"', shell=True)
             print("Fetching file", colored("\u2713", "green"))
         except subprocess.CalledProcessError as e:
             print("Fetching file", colored("x", "red"))
@@ -26,7 +26,7 @@ def run_tests(day: int, mode: str) -> None:
     print()
 
     try:
-        subprocess.check_output(f"kotlinc -d classes/{program_name}.jar -include-runtime src/days/{program_name}.kt src/utilities/ParserUtil.kt", shell=True)
+        subprocess.check_output(f"kotlinc -d classes/{program_name}.jar -include-runtime src/twentytwo/days/{program_name}.kt src/twentytwo/utilities/ParserUtil.kt", shell=True)
     except subprocess.CalledProcessError as e:
         print("Compilation", colored("x", "red"))
         return

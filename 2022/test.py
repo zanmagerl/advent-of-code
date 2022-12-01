@@ -13,7 +13,7 @@ def run_tests(day: int, mode: str, test: int) -> None:
     
     program_name = f'Day{day}'
     try:
-        subprocess.check_output(f"kotlinc -d classes/{program_name}.jar -include-runtime src/days/{program_name}.kt src/utilities/ParserUtil.kt", shell=True)
+        subprocess.check_output(f"kotlinc -d classes/{program_name}.jar -include-runtime src/twentytwo/days/{program_name}.kt src/twentytwo/utilities/ParserUtil.kt", shell=True)
     except subprocess.CalledProcessError as e:
         print("Compilation", colored("x", "red"))
         return
@@ -21,7 +21,7 @@ def run_tests(day: int, mode: str, test: int) -> None:
     print("Compilation", colored("\u2713", "green"))
     print()
 
-    test_directory = f"tests/{day}"
+    test_directory = f"tests/2022/{day}"
     test_inputs = list(filter(lambda x: x.endswith(".in"), os.listdir(test_directory)))
     test_outputs = list(filter(lambda x: x.endswith(".out"), os.listdir(test_directory)))
 
