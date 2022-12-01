@@ -1,6 +1,7 @@
 .idea
 *.iml
 
+classes
 
 *.class
 2018/day10
