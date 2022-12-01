@@ -9,7 +9,7 @@ class Day01 {
     }
 
     fun partTwo(elvesBackpack: List<List<Int>>): Int {
-        return elvesBackpack.map { it.sum() }.sortedDescending().subList(0, 3).sum()
+        return elvesBackpack.map { it.sum() }.sortedDescending().take(3).sum()
     }
 }
 
@@ -17,17 +17,14 @@ fun main(){
 
     val dayOne = Day01()
 
-    val input = readStrings()
-    val elvesBackpacks = mutableListOf<List<Int>>()
-    var currentBackpack = mutableListOf<Int>()
-    for (sandwich in input) {
-        if (sandwich.isBlank()) {
-            elvesBackpacks.add(currentBackpack)
-            currentBackpack = mutableListOf()
+    val elvesBackpacks = readStrings().fold(mutableListOf<MutableList<Int>>(mutableListOf())) { acc, line ->
+        if (line.isBlank()) {
+            acc.add(mutableListOf())
         } else {
-            currentBackpack.add(sandwich.toInt())
+            acc.last().add(line.toInt())
         }
-    }
+        acc
+    }.map { it.toList() }.toList()
 
     println(dayOne.partOne(elvesBackpacks))
     println(dayOne.partTwo(elvesBackpacks))
