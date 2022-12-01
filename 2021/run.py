@@ -37,7 +37,7 @@ def run_tests(day: int, mode: str) -> None:
     if mode == "debug":
         with subprocess.Popen(f"java -jar classes/{program_name}.jar < {input_file}", stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True) as process:
             for line in process.stdout:
-                print(line.decode('utf8'))
+                print(line.decode('utf8'), end="")
     else:
         try:
             output = subprocess.check_output(f"java -jar classes/{program_name}.jar < {input_file}", shell=True).decode('utf-8')
