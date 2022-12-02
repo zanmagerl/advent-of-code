@@ -3,12 +3,14 @@ import click
 import os
 import os.path
 import subprocess
+import requests
 
 @click.command()
 @click.option("--day", help="Run tests for day DAY of the Advent of Code puzzle.")
 @click.option("--mode", default="result", help="Run program in mode MODE. It's either result (default) or debug.")
 def run_tests(day: int, mode: str) -> None:
     # Prefix with zeros
+    not_filled_day = day
     day = day.zfill(2)
     
     program_name = f'Day{day}'
@@ -18,7 +20,11 @@ def run_tests(day: int, mode: str) -> None:
         print("Fetched input", colored("\u2713", "green"))
     else:
         try:
-            subprocess.check_output(f'wget -q --no-check-certificate --load-cookies=".env" -O "{input_file}" "https://adventofcode.com/2022/day/{day}/input"', shell=True)
+            session_data = open(".env", "r").readline()
+            data = requests.get(f"https://adventofcode.com/2022/day/{not_filled_day}/input", cookies={ "session": session_data}).text
+            i_file = open(input_file, "w")
+            i_file.write(data)
+            i_file.close()
             print("Fetching file", colored("\u2713", "green"))
         except subprocess.CalledProcessError as e:
             print("Fetching file", colored("x", "red"))
