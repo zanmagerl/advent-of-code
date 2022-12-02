@@ -13,14 +13,14 @@ def prepare(day: int, num_tests: int) -> None:
     
     program_name = f'Day{day}'
 
-    if not os.path.exists(f'src/days/{program_name}.kt'):
-        with open(f'src/days/{program_name}.kt', "w"): pass
+    if not os.path.exists(f'src/twentytwo/days/{program_name}.kt'):
+        with open(f'src/twentytwo/days/{program_name}.kt', "w"): pass
         print("Created new program file", colored("\u2713", "green"))
     else:
         print("Program file already exists", colored("\u2713", "yellow"))
 
-    if not os.path.exists(f"tests/{day}"):
-        os.mkdir(f"tests/{day}")
+    if not os.path.exists(f"tests/2022/{day}"):
+        os.mkdir(f"tests/2022/{day}")
         print("Created test directory", colored("\u2713", "green"))
     else:
         print("Test directory already exists", colored("\u2713", "yellow"))
@@ -29,9 +29,9 @@ def prepare(day: int, num_tests: int) -> None:
 
     for index in range(1, num_tests+1):
         index = str(index).zfill(2)
-        if not os.path.exists(f"tests/{day}/test-{day}-{index}.in"):
-            with open(f"tests/{day}/test-{day}-{index}.in", "w"): pass
-            with open(f"tests/{day}/test-{day}-{index}.out", "w"): pass
+        if not os.path.exists(f"tests/2022/{day}/test-{day}-{index}.in"):
+            with open(f"tests/2022/{day}/test-{day}-{index}.in", "w"): pass
+            with open(f"tests/2022/{day}/test-{day}-{index}.out", "w"): pass
             print(f"Created test file test {day}-{index}", colored("\u2713", "green"))
         else:
             print(f"Test file test {day}-{index} already exists", colored("\u2713", "yellow"))
