@@ -4,54 +4,38 @@ import twentytwo.utilities.readStrings
 
 class Day02 {
 
-    private fun applyGuessedStrategy(player1: String, player2: String): Int {
-        return when (player1) {
-            "A" -> when (player2) {
-                "X" -> 3 + 1
-                "Y" -> 6 + 2
-                else -> 0 + 3
-            }
-            "B" -> when (player2) {
-                "X" -> 0 + 1
-                "Y" -> 3 + 2
-                else -> 6 + 3
-            }
-            "C" -> when (player2) {
-                "X" -> 6 + 1
-                "Y" -> 0 + 2
-                else -> 3 + 3
-            }
-            else -> 0
-        }
-    }
-
-    private fun applyActualStrategy(player1: String, player2: String): Int {
-        return when (player1) {
-            "A" -> when (player2) {
-                "X" -> 3
-                "Y" -> 4
-                else -> 8
-            }
-            "B" -> when (player2) {
-                "X" -> 1
-                "Y" -> 5
-                else -> 9
-            }
-            "C" -> when (player2) {
-                "X" -> 2
-                "Y" -> 6
-                else -> 7
-            }
-            else -> 0
-        }
-    }
-
     fun partOne(guide: List<Pair<String, String>>): Int {
-        return guide.sumOf { applyGuessedStrategy(it.first, it.second) }
+        return guide.sumOf {
+            when (it) {
+                "A" to "X" -> 3 + 1
+                "A" to "Y" -> 6 + 2
+                "A" to "Z" -> 0 + 3
+                "B" to "X" -> 0 + 1
+                "B" to "Y" -> 3 + 2
+                "B" to "Z" -> 6 + 3
+                "C" to "X" -> 6 + 1
+                "C" to "Y" -> 0 + 2
+                "C" to "Z" -> 3 + 3
+                else -> throw IllegalArgumentException("Undefined sequence")
+            }.toInt()
+        }
     }
 
     fun partTwo(guide: List<Pair<String, String>>): Int {
-        return guide.sumOf { applyActualStrategy(it.first, it.second) }
+        return guide.sumOf {
+            when (it) {
+                "A" to "X" -> 0 + 3
+                "A" to "Y" -> 3 + 1
+                "A" to "Z" -> 6 + 2
+                "B" to "X" -> 0 + 1
+                "B" to "Y" -> 3 + 2
+                "B" to "Z" -> 6 + 3
+                "C" to "X" -> 0 + 2
+                "C" to "Y" -> 3 + 3
+                "C" to "Z" -> 6 + 1
+                else -> throw IllegalArgumentException("Undefined sequence")
+            }.toInt()
+        }
     }
 }
 
