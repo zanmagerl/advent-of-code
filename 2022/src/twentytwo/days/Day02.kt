@@ -45,7 +45,7 @@ fun main(){
     val day02 = Day02()
 
     val input = readStrings().map { it.splitToPair(" ") }
-    "a a a".splitToPair(" ")
+
     println(day02.partOne(input))
     println(day02.partTwo(input))
 }

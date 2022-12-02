@@ -26,7 +26,7 @@ def run_tests(day: int, mode: str) -> None:
     print()
 
     try:
-        subprocess.check_output(f"kotlinc -d classes/{program_name}.jar -include-runtime src/twentytwo/days/{program_name}.kt src/twentytwo/utilities/ParserUtil.kt", shell=True)
+        subprocess.check_output(f"kotlinc -d classes/{program_name}.jar -include-runtime src/twentytwo/days/{program_name}.kt src/twentytwo/utilities", shell=True)
     except subprocess.CalledProcessError as e:
         print("Compilation", colored("x", "red"))
         return
