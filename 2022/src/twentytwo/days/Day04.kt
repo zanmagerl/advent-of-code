@@ -12,10 +12,10 @@ data class Range(val start: Int, val end: Int) {
     }
 
     fun isContained(range: Range): Boolean {
-        return this.start >= range.start && this.end <= range.end
+        return (this.start..this.end).all { (range.start..range.end).contains(it) }
     }
     fun doesOverlap(range: Range): Boolean {
-        return this.start >= range.start && this.start <= range.end
+        return this.start in range.start..range.end
     }
 }
 
