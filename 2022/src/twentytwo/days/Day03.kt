@@ -12,11 +12,11 @@ private fun calculatePriority(backpacks: List<String>): Int {
     }
 }
 
-fun partOne(backpacks: List<String>): Int {
+private fun partOne(backpacks: List<String>): Int {
     return backpacks.sumOf { calculatePriority( it.chunked(it.length / 2)) }
 }
 
-fun partTwo(backpacks: List<String>): Int {
+private fun partTwo(backpacks: List<String>): Int {
     return backpacks.chunked(3).sumOf { calculatePriority(it) }
 }
 
