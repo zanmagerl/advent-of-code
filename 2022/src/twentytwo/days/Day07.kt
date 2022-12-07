@@ -76,6 +76,13 @@ private fun partTwo(): Int {
 
 private val root = Directory("root", 0, null)
 
+/**
+ * First fold splits input into lists of segments (segment = list of commands that represent path to one directory and
+ * its content):
+ * i.e. [[cd /, ls, dir a, 14848514 b.txt, 8504156 c.dat, dir d], [cd a, ls, dir e, 29116 f, 2557 g, 62596 h.lst], ...]
+ * Other folds go through directories and build the tree. Accumulator is the current directory so that we can easily
+ * move in and out of directories. With that system we do not need to rely on fact that input is BFS format.
+ */
 private fun parseInput() {
     readStrings().fold(mutableListOf(mutableListOf<TerminalOutput>())){ segments, line ->
         if (line.startsWith("$")) {
@@ -88,8 +95,8 @@ private fun parseInput() {
             segments.last().add(TerminalOutput(line))
         }
         segments
-    }.fold(root) {segment, lines ->
-        lines.fold(segment) { currentDirectory, line ->
+    }.fold(root) {currentDirectory, lines ->
+        lines.fold(currentDirectory) { currentDirectory, line ->
             when(line) {
                 is ListDirectory -> currentDirectory
                 is ChangeDirectory -> currentDirectory.findDirectory(line.target())
