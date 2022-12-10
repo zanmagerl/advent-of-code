@@ -12,4 +12,5 @@ Day 5 | Supply Stacks | :star: :star: |
 Day 6 | Tuning Trouble | :star: :star: |
 Day 7 | No Space Left On Device | :star: :star: |
 Day 8 | Treetop Tree House | :star: :star: |
+Day 9 | Rope Bridge | :star: :star: |
 

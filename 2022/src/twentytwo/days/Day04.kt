@@ -19,11 +19,11 @@ data class Range(val start: Int, val end: Int) {
     }
 }
 
-fun partOne(assignmentPairs: List<Pair<Range, Range>>): Int {
+private fun partOne(assignmentPairs: List<Pair<Range, Range>>): Int {
     return assignmentPairs.count { it.first.isContained(it.second) || it.second.isContained(it.first) }
 }
 
-fun partTwo(assignmentPairs: List<Pair<Range, Range>>): Int {
+private fun partTwo(assignmentPairs: List<Pair<Range, Range>>): Int {
     return assignmentPairs.count { it.first.doesOverlap(it.second) || it.second.doesOverlap(it.first) }
 }
 
