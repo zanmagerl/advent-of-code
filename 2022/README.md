@@ -15,3 +15,4 @@ Day 8 | Treetop Tree House | :star: :star: |
 Day 9 | Rope Bridge | :star: :star: |
 Day 10 | Cathode-Ray Tube | :star: :star: |
 Day 11 | Monkey in the Middle | :star: :star: |
+Day 12 | Hill Climbing Algorithm | :star: :star: |
