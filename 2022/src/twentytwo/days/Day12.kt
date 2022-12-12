@@ -9,9 +9,9 @@ data class Hill(val x: Int, val y: Int, val pathLength: Int = 0) {
     }
 }
 
-private fun findChar(grid: List<List<Char>>, searched: Char): Hill {
-    grid.mapIndexed { row, chars -> chars.mapIndexed {column, char -> if (char == searched) return Hill(column, row) } }
-    throw IllegalArgumentException("Wrong grid!")
+private fun findHill(map: List<List<Char>>, searched: Char): Hill {
+    map.mapIndexed { row, chars -> chars.mapIndexed {column, char -> if (char == searched) return Hill(column, row) } }
+    throw IllegalArgumentException("There is no such hill int he map")
 }
 
 private fun isInMap(hill: Hill, map: List<List<Char>>): Boolean {
@@ -50,8 +50,8 @@ private fun breadthFirstSearch(startHill: Hill, isAtDestination: (Hill) -> Boole
 }
 
 private fun partOne(map: List<List<Char>>): Int {
-    val startPoint = findChar(map, 'S')
-    val endPoint = findChar(map, 'E')
+    val startPoint = findHill(map, 'S')
+    val endPoint = findHill(map, 'E')
     return breadthFirstSearch(
             startPoint,
             isAtDestination = { hill -> hill == endPoint},
@@ -63,7 +63,7 @@ private fun partOne(map: List<List<Char>>): Int {
  * Same as part 1, but we start at the end and search for the hill with elevation equal to 0
  */
 private fun partTwo(map: List<List<Char>>): Int {
-    val startPoint = findChar(map, 'E')
+    val startPoint = findHill(map, 'E')
     return breadthFirstSearch(
             startPoint,
             isAtDestination = { hill -> measureHeight(hill, map) == 0 },
