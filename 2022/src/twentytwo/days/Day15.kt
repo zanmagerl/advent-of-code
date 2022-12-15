@@ -46,7 +46,7 @@ private fun partOne(sensors: List<Sensor>, beacons: List<Beacon>): Int {
 
 /**
  * We do not need to check for every (x,y) point, but we can actually jump over intervals that are covered by current sensor.
- * In short the algorithm is:
+ * The algorithm that we run every row:
  * 1. Find sensor that covers current (x,y) point
  * 2. a) if there is such sensor find its end range r for y-th row and go to 1. with point (x+r,y)
  *    b) if there is no sensor that covers the point return the tuning frequency
