@@ -21,7 +21,7 @@ data class Sensor(val x: Int, val y: Int, val minX: Int, val maxX: Int, val minY
         return false
     }
 
-    fun returnIntervalEnd(y: Int): Int {
+    fun findIntervalEnd(y: Int): Int {
         val rowDiff = abs(this.y - y)
         return maxX - rowDiff + 1
     }
@@ -56,7 +56,7 @@ private fun partTwo(sensors: List<Sensor>): Long {
         var x = 0
         while (x < 4000000) {
             x = sensors.firstOrNull { it.doesCoverPoint(x, y) }
-                ?.returnIntervalEnd(y)
+                ?.findIntervalEnd(y)
                 ?: return x * 4000000L + y
         }
     }
