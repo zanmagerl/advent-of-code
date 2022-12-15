@@ -18,3 +18,4 @@ Day 11 | Monkey in the Middle | :star: :star: |
 Day 12 | Hill Climbing Algorithm | :star: :star: |
 Day 13 | Distress Signal | :star: :star: |
 Day 14 | Regolith Reservoir | :star: :star: |
+Day 15 | Beacon Exclusion Zone | :star: :star: |
