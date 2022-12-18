@@ -20,3 +20,4 @@ Day 13 | Distress Signal | :star: :star: |
 Day 14 | Regolith Reservoir | :star: :star: |
 Day 15 | Beacon Exclusion Zone | :star: :star: |
 Day 16 | Proboscidea Volcanium | :star: :star: |
+Day 17 | Pyroclastic Flow |  :star: :star: |
