@@ -6,3 +6,10 @@ fun <T> List<T>.toPair(): Pair<T, T> {
     }
     return this[0] to this[1]
 }
+
+fun <T,R> List<T>.use(transform: (T) -> R): List<T> {
+    return this.map {
+        transform(it)
+        it
+    }
+}
