@@ -15,7 +15,7 @@ abstract class Robot(open val requirements: List<Requirement>) {
     }
     fun build(materials: MutableMap<Material, Int>): MutableMap<Material, Int> {
         val reducedMaterials = materials.toMutableMap()
-        requirements.map { reducedMaterials.replace(it.material, materials[it.material]?.minus(it.quantity) ?: 0) }
+        requirements.map { reducedMaterials.replace(it.material, materials[it.material]!!.minus(it.quantity)) }
         return reducedMaterials
     }
 }
@@ -93,7 +93,7 @@ private fun findMaxGeodes(blueprint: Blueprint, remainingTime: Int, materials: M
         return 0
     }
 
-    // Returned already calculated results for already reached nodes
+    // Return already calculated results for already reached nodes
     if (memo.containsKey(computeKey(blueprint, remainingTime, materials, robots))) {
         return memo[computeKey(blueprint, remainingTime, materials, robots)]!!
     }
