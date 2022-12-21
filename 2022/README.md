@@ -24,3 +24,4 @@ Day 17 | Pyroclastic Flow         | :star: :star: |
 Day 18 | Boiling Boulders         | :star: :star: |
 Day 19 | Not Enough Minerals      | :star: :star: |
 Day 20 | Grove Positioning System | :star: :star: |
+Day 21 | Monkey Math              | :star: star: |
