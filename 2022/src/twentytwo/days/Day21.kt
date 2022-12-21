@@ -49,7 +49,7 @@ class Day21 {
             return MonkeyHumanNumber(
                     this.monkeyNumber * monkey2.monkeyNumber + this.humanNumber * monkey2.humanNumber,
                     this.monkeyNumber * monkey2.humanNumber - this.humanNumber * monkey2.monkeyNumber,
-                    (this.denominator / monkey2.denominator) * (monkey2.monkeyNumber*monkey2.monkeyNumber + monkey2.humanNumber * monkey2.humanNumber)
+                    (this.denominator * monkey2.denominator) * (monkey2.monkeyNumber*monkey2.monkeyNumber + monkey2.humanNumber * monkey2.humanNumber)
             ).simplify()
         }
     }
