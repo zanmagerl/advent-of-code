@@ -28,3 +28,4 @@ Day 21 | Monkey Math              | :star: :star: |
 Day 22 | Monkey Map               | :star: :star: |
 Day 23 | Unstable Diffusion       | :star: :star: |
 Day 24 | Blizzard Basin           | :star: :star: |
+Day 25 | Full of Hot Air          | :star: :star: |
