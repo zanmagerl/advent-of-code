@@ -10,7 +10,7 @@ func TestPartOne(t *testing.T) {
 	}
 	expectedResults := []int{1000000, 1000, 0}
 	for index, example := range examples {
-		result := partOne(examples[index])
+		result := partOneBasic(examples[index])
 		if expectedResults[index] != result {
 			t.Errorf("Wrong result for test %v, got %d, want %d", example, result, expectedResults[index])
 		}

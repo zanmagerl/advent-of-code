@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"magerl.si/advent-of-code/2015/utils"
 	"math"
 	"os"
 	"strconv"
@@ -23,9 +24,14 @@ type Location struct {
 }
 
 type Instruction struct {
+	id            int
 	startLocation Location
 	endLocation   Location
 	operation     Operation
+}
+
+func (instruction Instruction) Equal(a Instruction) bool {
+	return instruction.id == a.id
 }
 
 func (instruction Instruction) toString() string {
@@ -65,7 +71,7 @@ func processInstructionV2(instruction Instruction, lights map[Location]int) map[
 		case TurnOn:
 			lights[location] += 1
 		case TurnOff:
-			lights[location] = int(math.Max(0, float64(lights[location]-1)))
+			lights[location] = utils.Max(0, lights[location]-1)
 		case Toggle:
 			lights[location] += 2
 		}
@@ -73,9 +79,10 @@ func processInstructionV2(instruction Instruction, lights map[Location]int) map[
 	return lights
 }
 
-func partOne(instructions []Instruction) int {
+func partOneBasic(instructions []Instruction) int {
 	lights := make(map[Location]int)
 	for _, instruction := range instructions {
+		//fmt.Println(instruction.id)
 		lights = processInstruction(instruction, lights)
 	}
 
@@ -86,7 +93,7 @@ func partOne(instructions []Instruction) int {
 	return numberOfTurnedOnLights
 }
 
-func partTwo(instructions []Instruction) int {
+func partTwoBasic(instructions []Instruction) int {
 	lights := make(map[Location]int)
 	for _, instruction := range instructions {
 		lights = processInstructionV2(instruction, lights)
@@ -106,12 +113,12 @@ func parseLocation(str string) Location {
 	return Location{x, y}
 }
 
-func parseInput(line string) Instruction {
+func parseInput(id int, line string) Instruction {
 	splitLine := strings.Split(line, " ")
 	if strings.HasPrefix(line, string(TurnOn)) || strings.HasPrefix(line, string(TurnOff)) {
-		return Instruction{operation: Operation(splitLine[0] + " " + splitLine[1]), startLocation: parseLocation(splitLine[2]), endLocation: parseLocation(splitLine[4])}
+		return Instruction{id: id, operation: Operation(splitLine[0] + " " + splitLine[1]), startLocation: parseLocation(splitLine[2]), endLocation: parseLocation(splitLine[4])}
 	} else if strings.HasPrefix(line, string(Toggle)) {
-		return Instruction{operation: Toggle, startLocation: parseLocation(splitLine[1]), endLocation: parseLocation(splitLine[3])}
+		return Instruction{id: id, operation: Toggle, startLocation: parseLocation(splitLine[1]), endLocation: parseLocation(splitLine[3])}
 	} else {
 		panic("Unknown start of line: " + line)
 	}
@@ -121,11 +128,19 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	var lines []Instruction
-
-	for scanner.Scan() {
-		lines = append(lines, parseInput(scanner.Text()))
+	for i := 0; scanner.Scan(); i++ {
+		lines = append(lines, parseInput(i, scanner.Text()))
 	}
+	println("Basic algorithm:")
+	fmt.Println("Part 1:", partOneBasic(lines))
+	fmt.Println("Part 2:", partTwoBasic(lines))
 
-	fmt.Println("Part 1:", partOne(lines))
-	fmt.Println("Part 2:", partTwo(lines))
+	for i := 0; i < len(lines); i++ {
+		// Algorithm is written for exclusive coordinates
+		lines[i].endLocation.x++
+		lines[i].endLocation.y++
+	}
+	fmt.Println("\nSweeping algorithm:")
+	fmt.Println("Part 1:", partOneSweep(lines))
+	fmt.Println("Part 2:", partTwoSweep(lines))
 }
