@@ -8,3 +8,4 @@ My solutions for the Advent of Code puzzles:
 * 2020 - Java
 * 2021 - Kotlin
 * 2022 - Kotlin
+* 2023 - Go
