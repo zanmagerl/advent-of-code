@@ -5,3 +5,4 @@ My solutions of the 2024 Advent of Code in Go.
 \# | Title                    | Stars         |
 ------------ |--------------------------|---------------| 
 Day 1 |    Historian Hysteria         | :star: :star:  |
+Day 2 |    Red-Nosed Reports         | :star: :star:  |
