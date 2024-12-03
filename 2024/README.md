@@ -6,3 +6,4 @@ My solutions of the 2024 Advent of Code in Go.
 ------------ |--------------------------|---------------| 
 Day 1 |    Historian Hysteria         | :star: :star:  |
 Day 2 |    Red-Nosed Reports         | :star: :star:  |
+Day 3 |    Mull It Over         | :star: :star:  |
