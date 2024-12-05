@@ -25,9 +25,7 @@ func solve(pagesLess map[int][]int, updates [][]int) (int, int) {
 		}
 		if correctOrder {
 			part1 += update[len(update)/2]
-		}
-		if !correctOrder {
-
+		} else {
 			sort.Slice(update, func(i, j int) bool {
 				for _, num := range pagesLess[update[i]] {
 					if update[j] == num {
