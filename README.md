@@ -9,3 +9,4 @@ My solutions for the Advent of Code puzzles:
 * 2021 - Kotlin
 * 2022 - Kotlin
 * 2023 - Go
+* 2024 - Go

@@ -45,7 +45,7 @@ func findXmas(grid [][]string, row int, column int) int {
 	return count
 }
 
-func find2MAS(grid [][]string, row int, column int) int {
+func findMAS(grid [][]string, row int, column int) int {
 	count := 0
 	if isInGrid(grid, row-1, column-1, "M") && isInGrid(grid, row+1, column+1, "S") {
 		if isInGrid(grid, row-1, column+1, "M") && isInGrid(grid, row+1, column-1, "S") {
@@ -92,7 +92,7 @@ func partTwo(lines []string) int {
 	for row, _ := range grid {
 		for column, _ := range grid[row] {
 			if grid[row][column] == "A" {
-				count := find2MAS(grid, row, column)
+				count := findMAS(grid, row, column)
 				sum += count
 			}
 		}
