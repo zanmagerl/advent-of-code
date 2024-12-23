@@ -71,14 +71,10 @@ func intersect(a map[int]computer, b map[int]computer) map[int]computer {
 	return nextA
 }
 
-var largestCliqueSize = -1
-var largestClique = make(map[int]map[int]computer)
-
 // https://en.wikipedia.org/wiki/Bron%E2%80%93Kerbosch_algorithm
-func findMaxClique(adjacencyMatrix [][]bool, idToComputerMap map[int]computer, r map[int]computer, p map[int]computer, x map[int]computer) {
+func findAllMaximalCliques(adjacencyMatrix [][]bool, idToComputerMap map[int]computer, r map[int]computer, p map[int]computer, x map[int]computer, maximalCliques map[int]map[int]computer) {
 	if len(p) == 0 && len(x) == 0 {
-		largestClique[len(r)] = r
-		largestCliqueSize = len(r)
+		maximalCliques[len(r)] = r
 		return
 	}
 	for _, comp := range p {
@@ -88,7 +84,7 @@ func findMaxClique(adjacencyMatrix [][]bool, idToComputerMap map[int]computer, r
 				neighbours[i] = idToComputerMap[i]
 			}
 		}
-		findMaxClique(adjacencyMatrix, idToComputerMap, add(r, comp), intersect(p, neighbours), intersect(x, neighbours))
+		findAllMaximalCliques(adjacencyMatrix, idToComputerMap, add(r, comp), intersect(p, neighbours), intersect(x, neighbours), maximalCliques)
 		delete(p, comp.id)
 		x[comp.id] = comp
 	}
@@ -109,16 +105,18 @@ func partTwo(computers map[string]computer, adjancencyMatrix [][]bool) string {
 		computer := computers[computerName]
 		idToComputerMap[computer.id] = computer
 	}
-	findMaxClique(adjancencyMatrix, idToComputerMap, make(map[int]computer), idToComputerMap, make(map[int]computer))
 
-	maxSize := -1
-	for size := range largestClique {
-		if size > maxSize {
-			maxSize = size
+	maximalCliques := make(map[int]map[int]computer)
+	findAllMaximalCliques(adjancencyMatrix, idToComputerMap, make(map[int]computer), idToComputerMap, make(map[int]computer), maximalCliques)
+
+	maxCliqueSize := -1
+	for size := range maximalCliques {
+		if size > maxCliqueSize {
+			maxCliqueSize = size
 		}
 	}
 
-	return generatePassword(largestClique[maxSize])
+	return generatePassword(maximalCliques[maxCliqueSize])
 }
 
 func parseInput(lines []string) (map[string]computer, [][]bool) {
