@@ -26,3 +26,4 @@ Day 19 |    Linen Layout     | :star: :star:  |
 Day 20 |    Race Condition      | :star: :star:  |
 Day 21 |   Keypad Conundrum      | :star: :star:  |
 Day 22 |   Monkey Market     | :star: :star:  |
+Day 23 |   LAN Party     | :star: :star:  |
